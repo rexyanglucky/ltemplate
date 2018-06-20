@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/template" id="temp">
+	<div>
+		<div v-for="item in list" style="color: red">
+			<div>
+				<div v-if="item.name">{{item.name}}</div>
+				<div v-else>无</div>
+			</div>
+	</div>
+<!-- 	<div>789
+		<p>456
+			<span>123</span>
+			<span>III</span>
+		</p>
+	</div> -->
+</script>
+
+<script type="text/javascript" src="./lib/index.js"></script>
+<script type="text/javascript">
+let a= new Vue({
+	el:"#root",
+	template:'#temp',
+	data:{
+		list:[
+			{name:'test',value:'123',isshow:false},
+			{name:'test1',value:'1234',isshow:true},
+			{name:'test2',value:'1235',isshow:true}
+		]
+	}
+})
+</script>
+</body>
+</html>
