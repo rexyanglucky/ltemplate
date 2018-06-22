@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>旋转墙</title>
+	<style type="text/css">
+		.content{
+			width: 70%;
+			margin: 0 auto;
+			padding: 20px;
+			position: relative;
+		}
+		.point-area{width: 100px;height: 100px; position: relative;}
+		.point{
+			position: absolute;
+			top:0;
+			left:0;
+			bottom: 0;
+			right: 0;
+			margin: auto;
+			width: 100%;
+			height: 100%;
+		}
+		.point.point-dot{
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background: #6AD7E9;
+			border:1px solid rgba(0, 205, 236, 0.37);
+
+		}
+		.point-circle:after{
+			content: '';
+			position: absolute;
+			border-radius: 50%;
+			top:0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			border:2px solid #00cdec;
+			opacity:0;
+		}
+		.point-circle.point-10:after{
+			animation: ripple 4500ms ease-out 225ms infinite;
+		}
+		.point-circle.point-40:after{
+			animation: ripple 4500ms ease-out 900ms infinite;
+		}
+		.point-circle.point-80:after{
+			animation: ripple 4500ms ease-out 1800ms infinite;
+		}
+		@keyframes ripple{ 0%{opacity:0;transform:scale(0.1,0.1); } 5%{ opacity:1; }  100%{ opacity:0;transform:scale(1);}}
+		@keyframes rotate{ 0%{transform: rotateY(0deg);} 50%{transform:rotateY(360deg);} 100%{transform:rotateY(720deg);}}
+
+		.rotate-area{
+			transform:perspective(1000px) rotateY(0deg);
+			position: absolute;
+			width: 100px;
+			height: 50px;
+			/*transition: 100ms ease-out;*/
+			animation: rotate 10000ms infinite;
+			background: red;
+			transform-style:preserve-3d;
+		}
+
+		.col{
+			list-style: none;
+			/*float: left;*/
+			position: absolute;
+			left: 0;
+			margin: 0;
+			padding: 0;
+			border-left: solid 2px blue;
+			border-top: solid 2px blue;
+			border-bottom: 0;
+			transform-origin: center center -200px; 
+		}
+		.col:last-child{
+			border-right: solid 2px blue;
+		}
+		.col li{
+			width: 50px;
+			height: 125px;
+			background: #efdace;
+			border-bottom: solid 2px blue;
+
+
+		}
+		.col-1{
+			/*transform: rotateY(30deg);*/
+			transform: translateZ(200px) rotateY(0deg);
+		}
+		.col-2{
+			transform: translateZ(200px) rotateY(-45deg);
+		}
+		.col-3{
+			transform:translateZ(200px) rotateY(-90deg);
+		}
+		.col-4{
+			transform:translateZ(200px) rotateY(-135deg);
+		}
+		.col-5{
+			transform:translateZ(200px) rotateY(-180deg);
+		}
+		.col-6{
+			transform:translateZ(200px) rotateY(-225deg);
+		}
+		.col-7{
+			transform:translateZ(200px) rotateY(-270deg);
+		}
+		.col-8{
+			transform:translateZ(200px) rotateY(-315deg);
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<div class="point-area">
+			<div class="point point-dot"></div>
+			<div class="point point-circle point-10"></div>
+			<div class="point point-circle point-40"></div>
+			<div class="point point-circle point-80"></div>
+		</div>
+	</div>
+	<div class="content">
+		<div class="rotate-area">
+			<ul class="col col-1">
+				<li>
+					1
+					<img src="">
+				</li>
+				<li>1
+					<img src="">
+				</li>
+				<li>1
+					<img src="">
+				</li>
+				<li>1
+					<img src="">
+				</li>
+
+			</ul>
+			<ul class="col col-2">
+				<li>2
+					<img src="">
+				</li>
+				<li>2
+					<img src="">
+				</li>
+				<li>2
+					<img src="">
+				</li>
+				<li>2
+					<img src="">
+				</li>
+		
+			</ul>
+			<ul class="col col-3">
+				<li>3
+					<img src="">
+				</li>
+				<li>3
+					<img src="">
+				</li>
+				<li>3
+					<img src="">
+				</li>
+				<li>3
+					<img src="">
+				</li>
+			
+			</ul>
+			<ul class="col col-4">
+				<li>4
+					<img src="">
+				</li>
+				<li>4
+					<img src="">
+				</li>
+				<li>4
+					<img src="">
+				</li>
+				<li>4
+					<img src="">
+				</li>
+
+			</ul>
+			<ul class="col col-5">
+				<li>5
+					<img src="">
+				</li>
+				<li>5
+					<img src="">
+				</li>
+				<li>5
+					<img src="">
+				</li>
+				<li>5
+					<img src="">
+				</li>
+
+			</ul>
+			<ul class="col col-6">
+				<li>6
+					<img src="">
+				</li>
+				<li>6
+					<img src="">
+				</li>
+				<li>6
+					<img src="">
+				</li>
+				<li>6
+					<img src="">
+				</li>
+
+			</ul>
+			<ul class="col col-7">
+				<li>7
+					<img src="">
+				</li>
+				<li>7
+					<img src="">
+				</li>
+				<li>7
+					<img src="">
+				</li>
+				<li>7
+					<img src="">
+				</li>
+
+			</ul>
+				<ul class="col col-8">
+				<li>8
+					<img src="">
+				</li>
+				<li>8
+					<img src="">
+				</li>
+				<li>8
+					<img src="">
+				</li>
+				<li>8
+					<img src="">
+				</li>
+
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

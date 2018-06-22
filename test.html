@@ -4,10 +4,10 @@
 	<title></title>
 </head>
 <body>
-<div id="root"></div>
+<div id="root"data-attr="d=343"data-name></div>
 <script type="text/template" id="temp">
-	<div>
-		<div v-for="item in list" style="color: red">
+	<div v-if="list.length">
+		<div  v-for="item in list" data-attr="d=1" style="color: red">
 			<div>
 				<div v-if="item.name">{{item.name}}</div>
 				<div v-else>无</div>
