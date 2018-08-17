@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	
+</head>
+<body>
+	<div id="root">
+		<div v-if="list.length">
+			<div  v-for="item in list" data-attr="d=1" style="color: red">
+				<div>
+					<div v-if="item.name">{{item.name}}</div>
+					<div v-else>无</div>
+				</div>
+				<div  v-for="d in item.children" data-attr="d=1" style="color: red">
+				<div>
+					<div v-if="d.name">{{item.name}}</div>
+					<div v-else>无</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<test :list="list"/>
+	</div>
+<script src="./component.vue"></script>
+	<script type="text/javascript">
+		let a= new Vue({
+			el:"#root",
+			data:{
+				list:[
+					{name:'test',value:'123',isshow:false,
+					children:[
+						{name:'test',value:'123',isshow:false},
+						{name:'test1',value:'1234',isshow:true},
+						{name:'test2',value:'1235',isshow:true}
+					]},
+					{name:'test1',value:'1234',isshow:true,
+					children:[
+						{name:'test',value:'123',isshow:false},
+						{name:'test1',value:'1234',isshow:true},
+						{name:'test2',value:'1235',isshow:true}
+					]},
+					{name:'test2',value:'1235',isshow:true,
+					children:[
+						{name:'test',value:'123',isshow:false},
+						{name:'test1',value:'1234',isshow:true},
+						{name:'test2',value:'1235',isshow:true}
+					]}
+				]
+			}
+		})
+
+	</script>
+</body>
+</html>

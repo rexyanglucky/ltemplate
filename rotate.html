@@ -111,8 +111,50 @@
 			transform:translateZ(200px) rotateY(-315deg);
 		}
 	</style>
+	<style type="text/css">
+	body{
+		background: #000;
+	}
+		.number-grow{
+			font-family:Arial-BoldMT;
+			font-size:64px;
+			color:#ffaf00;
+			letter-spacing:2.67px;
+			/*font-weight: bold;*/
+		}
+	</style>
+		<!-- <script src="http://d3js.org/d3.v3.min.js"></script> -->
+	<script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
+
+	<div >
+		<span data-time="2" class="number-grow" id="numberGrow" data-value="720000">0</span>
+	</div>
+	<script type="text/javascript">
+		function numberGrow(element){
+			let number = element.getAttribute("data-value");
+			let time = element.getAttribute("data-time");
+			let step = (number * 16) / (time * 1000);
+			let old = 0;
+			let start = 0;
+			let t =setInterval(function(){
+				start += step;
+				if(start>number){
+					clearInterval(t);
+					start = number+"+";
+					t = null;
+				}
+				if(old===start){
+					return ;
+				}
+				old = start;
+				element.innerHTML=old.toString().replace(/(\d)(?=(?:\d{3}[+]?)+$)/g, '$1,');
+			},16)
+		}
+numberGrow(document.getElementById('numberGrow'));
+	</script>
+	<svg id="canvas"></svg>
 	<div class="content">
 		<div class="point-area">
 			<div class="point point-dot"></div>
@@ -246,5 +288,33 @@
 			</ul>
 		</div>
 	</div>
+	<script type="text/javascript">
+	var data2 = [[30, 30], [330, 30],[330, 330], [630, 330]];
+	canvas = d3.select('#canvas'),   //  页面中已经存在id为canvas的SVG元素
+//  创建直线生成器
+    lineGenerator = d3.line()
+                      //    获取每个节点的x坐标
+                      .x(function(d) {
+                            return d[0]
+                        })
+                       //   获取每个节点的y坐标
+                       .y(function(d) {
+                            return d[1];
+                       });
+    // console.log(lineGenerator);
+
+// //   在返回值为false的位置进行切割，并且当前数据不再计入到路径中
+// var line2 = lineGenerator.defined(function(d, i, index) {
+//                       return d[0] > 0 && d[1] > 0;
+//             })(data2);
+//  将图形添加到画布中            
+
+    canvas.append('svg:path')
+  .attr('d', lineGenerator(data2))
+  .attr('stroke', 'green')
+  .attr('stroke-width', 2)
+  .attr('fill', 'none'); 
+
+</script>
 </body>
 </html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>旋转墙</title>
+
+
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<svg id="svgCanvas"></svg>
+	
+	<script type="text/javascript">
+//  假定页面中存在ID为canvas的canvas元素
+var canvas = document.getElementById('canvas'), 
+    svgCtx = d3.select('#svgCanvas'),
+    //  获取canvas的上下文
+    canvasCtx = canvas.getContext('2d'),
+    datas = [[10, 10],[50, 10], [100, 60], [150, 15], [200, 55], [250, 60], [300, 80], [350, 50], [400, 70]];
+//  创建线性路径生成器
+var lineCreator = d3.line()
+                .x(function(d){
+                    return d[0];
+                })
+                .y(function(d) {
+                    return d[1];
+                })
+                // .curve(d3.curveBasis);
+                .curve(d3.curveCatmullRom.alpha(0.5));
+                
+/**
+  * 在HTML5的canvas元素中绘制
+  */
+function drawInCanvas() {
+    //  设置线的宽度  
+    canvasCtx.lineWidth = 2;
+    //  设置线的颜色
+    canvasCtx.strokeStyle = 'blue';
+    //  设置绘制的上下文
+    lineCreator.context(canvasCtx);
+    //  设置数据
+    lineCreator(datas);
+    //  绘制路径
+    canvasCtx.stroke();
+}
+var arc = d3.arc();
+
+var a =arc({
+  innerRadius: 0,
+  outerRadius: 100,
+  startAngle: 0,
+  endAngle: Math.PI / 2
+}); 
+/**
+  * 在SVG元素中绘制
+  */
+function drawInSvg() {
+    //  必须要将上下文置空
+    // lineCreator.context(null);
+    //  添加路径元素
+    // svgCtx.append('path')
+    //        .attr('d', lineCreator(datas))
+    //        .attr('stroke-width', '2px')
+    //        .attr('stroke', 'blue')
+    //        .attr('fill', 'none')
+           svgCtx.append('path')
+           .attr('d',a)
+           .attr('stroke-width', '2px')
+           .attr('stroke', 'blue')
+           .attr('fill', 'none')
+}
+//  在Canvas元素中绘制
+drawInCanvas();
+//  在SVG元素中绘制
+drawInSvg();
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "ltemplate",
+  "version": "1.0.0",
+  "description": "实现一个简单 模板转换虚拟dom，虚拟dom diff，及模板语法解析, 数据监听 MVVM 等功能",
+  "main": "req.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rexyanglucky/ltemplate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rexyanglucky/ltemplate/issues"
+  },
+  "homepage": "https://github.com/rexyanglucky/ltemplate#readme"
+}
